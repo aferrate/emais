@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Domain\Model\Vhs" table="vhs">
+    <unique-constraints>
+      <unique-constraint name="vhs_title_unique" columns="title"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id"/>
+    <field name="adult" type="boolean" column="adult" nullable="false"/>
+    <field name="backdropPath" column="backdrop_path" type="string" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="belongsToCollection" type="json" column="belongs_to_collection" nullable="true"/>
+    <field name="budget" type="float" column="budget" nullable="false"/>
+    <field name="genres" type="json" column="genres" nullable="false"/>
+    <field name="homepage" column="homepage" type="string" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="imdbId" column="imdb_id" type="string" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="originalLanguage" column="original_language" type="string" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="originalTitle" column="original_title" type="string" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="overview" column="overview" type="text" nullable="false"/>
+    <field name="popularity" type="float" column="popularity" nullable="false"/>
+    <field name="posterPath" column="poster_path" type="string" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="productionCompanies" type="json" column="production_companies" nullable="false"/>
+    <field name="productionCountries" type="json" column="production_countries" nullable="false"/>
+    <field name="releaseDate" column="release_date" type="string" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="revenue" type="float" column="revenue" nullable="false"/>
+    <field name="runtime" type="integer" column="runtime" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="spokenLanguages" type="json" column="spoken_languages" nullable="false"/>
+    <field name="status" column="status" type="string" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="tagline" column="tagline" type="string" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="title" column="title" type="string" length="255" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="video" type="boolean" column="video" nullable="false"/>
+    <field name="voteAverage" type="float" column="vote_average" nullable="false"/>
+    <field name="voteCount" type="integer" column="vote_count" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

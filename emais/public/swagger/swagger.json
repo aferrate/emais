@@ -1,0 +1,183 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API vhs",
+        "version": "0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api/v1/",
+            "description": "vhs API"
+        },
+        {
+            "url": "http://localhost/api/v1/",
+            "description": "vhs API"
+        }
+    ],
+    "paths": {
+        "/vhs/getall": {
+            "get": {
+                "operationId": "e77d5f5d705353a9c9351c0552c5a844",
+                "responses": {
+                    "200": {
+                        "description": "get all vhs",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Vhs"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vhs/create": {
+            "post": {
+                "operationId": "882ecec35269a81b0feb1743b438ef0c",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/AddVhs"
+                },
+                "responses": {
+                    "201": {
+                        "description": "insert vhs",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "response of insering vhs",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "insert vhs bad parameters",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "description": "response of insering vhs with bad parameters",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Vhs": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "adult": {
+                        "type": "boolean"
+                    },
+                    "backdropPath": {
+                        "type": "string"
+                    },
+                    "belongsToCollection": {
+                        "type": "array"
+                    },
+                    "budget": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "genres": {
+                        "type": "array"
+                    },
+                    "homepage": {
+                        "type": "string"
+                    },
+                    "imdbId": {
+                        "type": "string"
+                    },
+                    "originalLanguage": {
+                        "type": "string"
+                    },
+                    "originalTitle": {
+                        "type": "string"
+                    },
+                    "overview": {
+                        "type": "string"
+                    },
+                    "popularity": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "posterPath": {
+                        "type": "string"
+                    },
+                    "productionCompanies": {
+                        "type": "array"
+                    },
+                    "productionCountries": {
+                        "type": "array"
+                    },
+                    "releaseDate": {
+                        "type": "string"
+                    },
+                    "revenue": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "runtime": {
+                        "type": "integer"
+                    },
+                    "spokenLanguages": {
+                        "type": "array"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "tagline": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "video": {
+                        "type": "boolean"
+                    },
+                    "voteAverage": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "voteCount": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "requestBodies": {
+            "AddVhs": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "required": [
+                                "idFilm",
+                                "full_details"
+                            ],
+                            "properties": {
+                                "idFilm": {
+                                    "type": "integer"
+                                },
+                                "full_details": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
