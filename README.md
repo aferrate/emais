@@ -1,62 +1,62 @@
-# Sample API project with Symfony 5 with JWT and Docker
-### Install
+# API VHS
+### Instalación
 
-run docker:
+Ejecutar docker:
 ```
 cd laradock
 docker-compose up -d nginx mysql phpmyadmin
 ```
 
 
-install dependencies:
+Instalar dependencias:
 ```
 docker-compose exec workspace bash
 composer install
 ```
 
 
-create database:
+crear base de datos:
 ```
 docker-compose exec workspace bash
 bin/console doctrine:database:create
 ```
 
 
-migrate entities:
+Migrar entidades:
 ```
 docker-compose exec workspace bash
 bin/console doctrine:migrations:migrate
 ```
 
 
-### Run tests:
+### Ejecutar tests:
 ```
 docker-compose exec workspace bash
 php bin/phpunit
 ```
 
 
-### Run php-cs-fixer on src folder:
+### Ejecutar php-cs-fixer en la carpeta src:
 ```
 docker-compose exec workspace bash
 php-cs-fixer fix ./src --rules=@Symfony
 ```
 
 
-### Run phpStan on src folder:
+### Ejecutar phpStan en la carpeta src:
 ```
 docker-compose exec workspace bash
 ./vendor/bin/phpstan analyse --level max src
 ```
 
 
-### Get into the container:
+### Entrar en el contenedor de la aplicación:
 ```
 docker-compose exec workspace bash
 ```
 
 
-### Generate swagger.json
+### Generar swagger.json
 
 generate swagger.json:
 ```
@@ -65,7 +65,7 @@ docker-compose exec workspace bash
 ```
 
 
-### Start application
+### Ejecutar application
 
 access phpmyadmin:
 - [http://localhost:8081](http://localhost:8081)
@@ -86,12 +86,105 @@ access swagger ui:
 
 ### Endpoints
 
-login:
+Obtener todos los vhs:
 ```
-http://localhost/api/login_check
+http://localhost/api/v1/vhs/getall
 GET
+```
+
+
+Añadir vhs:
+```
+http://localhost/api/v1/vhs/create
+POST
 {
-    "username": "test@test.com",
-    "password": "test"
+   "idFilm":508947,
+   "full_details":{
+      "adult":false,
+      "backdrop_path":"/iPhDToxFzREctUA0ZQiYZamXsMy.jpg",
+      "belongs_to_collection":null,
+      "budget":190000000,
+      "genres":[
+         {
+            "id":16,
+            "name":"Animation"
+         },
+         {
+            "id":10751,
+            "name":"Family"
+         },
+         {
+            "id":35,
+            "name":"Comedy"
+         },
+         {
+            "id":14,
+            "name":"Fantasy"
+         }
+      ],
+      "homepage":"https://www.disneyplus.com/movies/turning-red/4mFPCXJi7N2m",
+      "imdb_id":"tt8097030",
+      "original_language":"en",
+      "original_title":"Turning Red",
+      "overview":"Thirteen-year-old Mei is experiencing the awkwardness of being a teenager with a twist – when she gets too excited, she transforms into a giant red panda.",
+      "popularity":8354.569,
+      "poster_path":"/qsdjk9oAKSQMWs0Vt5Pyfh6O4GZ.jpg",
+      "production_companies":[
+         {
+            "id":2,
+            "logo_path":"/wdrCwmRnLFJhEoH8GSfymY85KHT.png",
+            "name":"Walt Disney Pictures",
+            "origin_country":"US"
+         },
+         {
+            "id":3,
+            "logo_path":"/1TjvGVDMYsj6JBxOAkUHpPEwLf7.png",
+            "name":"Pixar",
+            "origin_country":"US"
+         }
+      ],
+      "production_countries":[
+         {
+            "iso_3166_1":"US",
+            "name":"United States of America"
+         }
+      ],
+      "release_date":"2022-03-10",
+      "revenue":0,
+      "runtime":100,
+      "spoken_languages":[
+         {
+            "english_name":"Cantonese",
+            "iso_639_1":"cn",
+            "name":"广州话 / 廣州話"
+         },
+         {
+            "english_name":"Mandarin",
+            "iso_639_1":"zh",
+            "name":"普通话"
+         },
+         {
+            "english_name":"English",
+            "iso_639_1":"en",
+            "name":"English"
+         },
+         {
+            "english_name":"French",
+            "iso_639_1":"fr",
+            "name":"Français"
+         },
+         {
+            "english_name":"Korean",
+            "iso_639_1":"ko",
+            "name":"한국어/조선말"
+         }
+      ],
+      "status":"Released",
+      "tagline":"Growing up is a beast.",
+      "title":"Turning Red",
+      "video":false,
+      "vote_average":7.5,
+      "vote_count":975
+   }
 }
 ```

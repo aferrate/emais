@@ -85,7 +85,7 @@ final class Vhs
         return $this->genres;
     }
 
-    public function setGenres(array $genres = null): void
+    public function setGenres(array $genres): void
     {
         $this->genres = $genres;
     }
@@ -286,7 +286,7 @@ final class Vhs
         $this->setAdult($vhsArray['full_details']['adult']);
         $this->setBackdropPath($vhsArray['full_details']['backdrop_path']);
 
-        if(isset($vhsArray['full_details']['belongs_to_collection'])) {
+        if (isset($vhsArray['full_details']['belongs_to_collection'])) {
             $this->setBelongsToCollection($vhsArray['full_details']['belongs_to_collection']);
         }
 
