@@ -71,10 +71,8 @@ class GetAllVhsTest extends TestCase
 
     public function testGetAllVhsEmpty(): void
     {
-        $vhsRepository = $this->getMockBuilder(VhsRepository::class)
-            ->disableOriginalConstructor()
-            ->getMock()
-        ;
+        $vhsRepository = $this->createMock(VhsRepository::class);
+
         $vhsRepository->expects($this->any())
             ->method('findAll')
             ->willReturn([])
@@ -82,15 +80,13 @@ class GetAllVhsTest extends TestCase
 
         $getAllVhs = new GetAllVhs($vhsRepository);
 
-        $this->assertEquals(['message' => 'no data found'], $getAllVhs->execute());
+        $this->assertSame(['message' => 'no data found'], $getAllVhs->execute());
     }
 
     public function testGetAllVhsNoEmpty(): void
     {
-        $vhsRepository = $this->getMockBuilder(VhsRepository::class)
-            ->disableOriginalConstructor()
-            ->getMock()
-        ;
+        $vhsRepository = $this->createMock(VhsRepository::class);
+
         $vhsRepository->expects($this->any())
             ->method('findAll')
             ->willReturn($this->resultVhs['full_details'])
@@ -98,6 +94,6 @@ class GetAllVhsTest extends TestCase
 
         $getAllVhs = new GetAllVhs($vhsRepository);
 
-        $this->assertEquals($this->resultVhs['full_details'], $getAllVhs->execute());
+        $this->assertSame($this->resultVhs['full_details'], $getAllVhs->execute());
     }
 }

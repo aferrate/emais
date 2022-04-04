@@ -75,24 +75,19 @@ class AddVhsTest extends TestCase
         $vhs = $this->resultVhs;
         $vhs['full_details']['budget'] = null;
 
-        $vhsRepository = $this->getMockBuilder(VhsRepository::class)
-            ->disableOriginalConstructor()
-            ->getMock()
-        ;
+        $vhsRepository = $this->createMock(VhsRepository::class);
 
         $addVhs = new AddVhs($vhsRepository);
 
-        $this->assertEquals(['data' => ['message' => 'bad formed json missing attributes'], 'badRequest' => true], $addVhs->execute($vhs));
+        $this->assertSame(['data' => ['message' => 'bad formed json missing attributes'], 'badRequest' => true], $addVhs->execute($vhs));
     }
 
     public function testAddVhsBadId(): void
     {
         $vhs = new Vhs();
 
-        $vhsRepository = $this->getMockBuilder(VhsRepository::class)
-            ->disableOriginalConstructor()
-            ->getMock()
-        ;
+        $vhsRepository = $this->createMock(VhsRepository::class);
+
         $vhsRepository->expects($this->any())
             ->method('findOneById')
             ->willReturn($vhs)
@@ -100,21 +95,19 @@ class AddVhsTest extends TestCase
 
         $addVhs = new AddVhs($vhsRepository);
 
-        $this->assertEquals(['data' => ['message' => 'already existing id'], 'badRequest' => true], $addVhs->execute($this->resultVhs));
+        $this->assertSame(['data' => ['message' => 'already existing id'], 'badRequest' => true], $addVhs->execute($this->resultVhs));
     }
 
     public function testAddVhs(): void
     {
-        $vhsRepository = $this->getMockBuilder(VhsRepository::class)
-            ->disableOriginalConstructor()
-            ->getMock()
-        ;
+        $vhsRepository = $this->createMock(VhsRepository::class);
+
         $vhsRepository->expects($this->any())
             ->method('save')
         ;
 
         $addVhs = new AddVhs($vhsRepository);
 
-        $this->assertEquals(['data' => ['message' => 'vhs created'], 'badRequest' => false], $addVhs->execute($this->resultVhs));
+        $this->assertSame(['data' => ['message' => 'vhs created'], 'badRequest' => false], $addVhs->execute($this->resultVhs));
     }
 }
