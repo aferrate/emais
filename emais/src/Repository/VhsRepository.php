@@ -21,15 +21,7 @@ class VhsRepository implements VhsRepositoryInterface
 
     public function findAll(): array
     {
-        $qb = $this->entityManager->createQueryBuilder();
-
-        $vhs = $qb->select('v')
-            ->from('App:Vhs', 'v')
-            ->getQuery()
-            ->getResult(AbstractQuery::HYDRATE_ARRAY)
-        ;
-
-        return $vhs;
+        return $this->entityManager->getRepository(Vhs::class)->findAll();
     }
 
     public function findOneById(int $id): ?Vhs
