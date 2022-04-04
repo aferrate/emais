@@ -188,13 +188,3 @@ POST
    }
 }
 ```
-
-
-### Resumen
-He intentado aplicar DDD en la prueba dentro de la carpeta src hay una carpeta de Domain y otra de Application que ahi es dónde irían la lógica de dominio y los casos de uso de la aplicación el resto de carpetas pertenecen a la capa de infraestructura.
-
-De tener más tiempo disponible me hubiera gustado implementar una caché en Redis, una autenticación en JWT y CI con Travis.
-
-Hay un ejemplo de JWT en este repositorio https://github.com/aferrate/symfony5_api_cars.
-
-Y esxite también una aplicacion mas completa en laravel 8 dónde implemento una solución con elasticsearch, redis y Travis https://github.com/aferrate/cars_laravel8.
